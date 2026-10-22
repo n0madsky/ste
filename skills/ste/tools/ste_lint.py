@@ -197,8 +197,9 @@ def main():
         i = args.index("--fail-over")
         fail_over = float(args[i + 1])
         del args[i:i + 2]
-    if not args:
-        raise SystemExit(__doc__.split("Usage:")[1].strip())
+    if not args or args[0] in ("-h", "--help"):
+        print(__doc__.strip())
+        return
 
     files = []
     for a in args:
